@@ -1,7 +1,3 @@
-# This file declares the Board Class, that contain the Pieces
-# and is a high-level interface to the user use the piece
-
-
 from copy import *
 from Peca import *
 from Jogador import *

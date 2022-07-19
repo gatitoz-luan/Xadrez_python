@@ -1,3 +1,4 @@
+from functools import *
 
 class Rainha:
 	def __init__(self,jogador):
@@ -302,8 +303,6 @@ class Peao:
 
 	def tipo(self):
 		return 'peao'
-
-
 
 
 
