@@ -3,7 +3,6 @@ import Tabuleiro,Jogador
 from IA import *
 import time
 
-
 ia = IA()
 
 ti = time.clock()

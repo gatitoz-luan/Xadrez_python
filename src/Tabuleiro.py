@@ -109,9 +109,6 @@ class Tabuleiro:
     def avalia(self, heuristica):
         return heuristica(self.pecas)
 
-    # private methods, don't call
-    # thanks to python by don't have private methods
-
     def indexFromColumn(self, i):
         return chr(i + ord('A'))
 
@@ -138,7 +135,7 @@ class Tabuleiro:
     def str2matrix(self, str):
         return (ord(str[0]) - ord('A'), int(str[1]) - 1)
 
-    def move(self, posicao1, posicao2):  # móve
+    def move(self, posicao1, posicao2):  
         (xi, yi) = posicao1
         (xf, yf) = posicao2
         tmp = self.pecas[xi][yi]
