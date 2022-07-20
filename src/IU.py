@@ -760,4 +760,8 @@ def interface():
     pygame.display.quit()
     pygame.quit()
 
+<<<<<<< HEAD
 interface()
+=======
+interface()
+>>>>>>> 3010ed60ff473a654b3d0f3484858aec57acf3b5
