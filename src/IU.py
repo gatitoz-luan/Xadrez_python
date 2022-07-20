@@ -44,6 +44,7 @@ BRANCO = [255,255,255]
 CINZA = [100, 100, 100] # [139,69,19]
 AMARELO = [255,255,0]
 VERDE = [0,255,0]
+PRETO = [0,0,0]
 BRANCAS = 1
 PRETAS = 2
 
@@ -61,7 +62,6 @@ TELA_FIM2 = 9;
 
 #imagens de fundo
 imagem_menu1 = pygame.image.load("Ativos/menu_tela1.jpg")
-imagem_menu2 = pygame.image.load("Ativos/menu_tela2.jpg")
 imagem_opcoes = pygame.image.load("Ativos/opcoes_menu.png")
 imagem_tabuleiro = pygame.image.load("Ativos/tabuleiromadeira.png")
 
@@ -129,12 +129,10 @@ def desenha_menu1(tela):
     pygame.display.flip()  # Por algum motivo isso é necessário quando se usa um draw no pygame
     pygame.display.update() # atualiza a tela com tudo que foi feito
 
-#FUNÇÃO DESENHA_MENU2 PRECISA SER ORGANIZADAAAAAAA
 def desenha_menu2(tela, estado):
     # Definido imagem de fundo da interface
     cor_texto = (255, 69, 0) #Cinza quase Branco
     cor_fundo = None #(115, 117, 117) #Cor estranha
-    tela.blit(imagem_menu2, (0, 0)) #Define o background como imagem_menu2
     pygame.display.flip()  # Por algum motivo isso é necessário quando se usa um draw no pygame
     pygame.display.update() # atualiza a tela com tudo que foi feito
     fonte_texto = pygame.font.Font("Ativos/Crackvetica.ttf", 60)
@@ -166,11 +164,8 @@ def desenha_menu2(tela, estado):
         tela.blit(texto_opcoes, rect_opcoes)
         tela.blit(texto_sair, rect_sair)
     pygame.display.update()
-    #jogar = [239, 64] opcoes = [189, 64] sair = [159, 64]
 
-#FUNÇÃO DESENHA_MENU2 PRECISA SER ORGANIZADAAAAAAA
 def desenha_opcoes(tela):
-    # Definido imagem de fundo da interface
     cor_texto = (255, 69, 0) #Cinza quase Branco
     cor_fundo = None #(115, 117, 117) #Cor estranha
     tela.blit(imagem_opcoes, (0, 0)) #Define o background como imagem_opcoes
@@ -190,7 +185,6 @@ def desenha_opcoes(tela):
     tela.blit(texto_dificuldade, rect_dificuldade)
     tela.blit(texto_voltar, rect_voltar)
     pygame.display.update()
-    #jogar = [239, 64] opcoes = [189, 64] sair = [159, 64]
 
 def jogo_terminado(tela, frase):
     # Definido imagem de fundo da interface
@@ -203,21 +197,7 @@ def jogo_terminado(tela, frase):
     tela.blit(texto_vitoria, rect_vitoria)
     # jogar = [239, 64] opcoes = [189, 64] sair = [159, 64]
 
-#função da tela inicial -> efeito de eletricidade
-def eletricidade(largura, altura, tela):
-    eletricidade = pygame.Surface((largura, altura))
-    eletricidade.fill((255,255,255))
-    pygame.mixer.music.load("Ativos/electricshock.mp3")
-    pygame.mixer.music.play(-1)
-    for alpha in range(0, 300):
-        eletricidade.set_alpha(alpha)
-        desenha_menu1(tela)
-        tela.blit(eletricidade, (0,0))
-        pygame.display.update()
-    pygame.mixer.music.stop()
-    pygame.mixer.music.load("Ativos/thunder2.mp3")
-    pygame.mixer.music.play(0)
-    desenha_menu2(tela, 1)
+
 
 def desenha_tabuleiro(tela, estado, mensagem):
     tela.blit(imagem_tabuleiro, (0, 0))
@@ -398,7 +378,7 @@ def interface():
     running = True
     global TURNO
     global VS_IA
-    VS_IA = False
+    VS_IA = True
 
     while running:
         key = pygame.key.get_pressed()
@@ -407,7 +387,7 @@ def interface():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if estado == TELA_INTRO or estado == TELA_MENU: #estado 3 precisa ser removido daqui ou acertado
+            if estado == TELA_INTRO or estado == TELA_MENU:
                 if event.type == pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
                     print(pos) #usado para debugar
@@ -751,7 +731,6 @@ def interface():
 
             if estado == TELA_INICIO:
                 if event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONUP or key[pygame.K_v]:
-                    eletricidade(LARGURA, ALTURA, tela)
                     tab=Tabuleiro()
                     computador=IA(tab)
                     estado = TELA_MENU
@@ -760,8 +739,4 @@ def interface():
     pygame.display.quit()
     pygame.quit()
 
-<<<<<<< HEAD
 interface()
-=======
-interface()
->>>>>>> 3010ed60ff473a654b3d0f3484858aec57acf3b5
