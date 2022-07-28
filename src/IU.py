@@ -126,18 +126,18 @@ def desenha_menu1(tela):
     # Definido imagem de fundo da interface
     tela.blit(imagem_menu1, (0, 0))
 
-    pygame.display.flip()  # Por algum motivo isso é necessário quando se usa um draw no pygame
+    pygame.display.flip()
     pygame.display.update() # atualiza a tela com tudo que foi feito
 
 def desenha_menu2(tela, estado):
     # Definido imagem de fundo da interface
     cor_texto = (255, 69, 0) #Cinza quase Branco
     cor_fundo = None #(115, 117, 117) #Cor estranha
-    pygame.display.flip()  # Por algum motivo isso é necessário quando se usa um draw no pygame
+    pygame.display.flip()
     pygame.display.update() # atualiza a tela com tudo que foi feito
     fonte_texto = pygame.font.Font("Ativos/Crackvetica.ttf", 60)
     if estado == TELA_INTRO:
-        pygame.time.delay(3000)
+        pygame.time.delay(0)
         texto_jogar = fonte_texto.render('Jogar', True, cor_texto, cor_fundo)
         texto_opcoes = fonte_texto.render('Opcoes', True, cor_texto, cor_fundo)
         texto_sair = fonte_texto.render('Sair', True, cor_texto, cor_fundo)
@@ -169,7 +169,7 @@ def desenha_opcoes(tela):
     cor_texto = (255, 69, 0) #Cinza quase Branco
     cor_fundo = None #(115, 117, 117) #Cor estranha
     tela.blit(imagem_opcoes, (0, 0)) #Define o background como imagem_opcoes
-    pygame.display.flip()  # Por algum motivo isso é necessário quando se usa um draw no pygame
+    pygame.display.flip()
     pygame.display.update() # atualiza a tela com tudo que foi feito
     fonte_texto = pygame.font.Font("Ativos/Comical Smash.ttf", 60)
     texto_pecas = fonte_texto.render('Pecas:  Pretas X Brancas', True, cor_texto, cor_fundo)
@@ -253,7 +253,7 @@ def desenha_tabuleiro(tela, estado, mensagem):
     if(estado == TELA_FIM):
         jogo_terminado(tela, mensagem)
 
-    pygame.display.flip()  # Por algum motivo isso é necessário quando se usa um draw no pygame
+    pygame.display.flip()
     pygame.display.update() # atualiza a tela com tudo que foi feito
 
 def mover_peca(tela, peca, posicao):
@@ -329,11 +329,9 @@ def mover_peca(tela, peca, posicao):
             dt = tempo_final - tempo_inicial
             tempo_inicial = tempo_final
 
-    #Ajustando erros do DT
     peca.rect.x = posicao[0]
     peca.rect.y = posicao[1]
     desenha_tabuleiro(tela, MOVIMENTO_JOGADOR, mensagem)
-##########################################################################
 
 
 #função principal

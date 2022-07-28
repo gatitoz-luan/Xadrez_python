@@ -6,5 +6,7 @@ Jogo de Xadrez feito para estudar e aplicar orientação a objetos da disciplina
 - Execute o comando 'pip install pygame'.
 
 ### Como Jogar
+- Abrir o arquivo "Xadrez.bat"
+ou
 - Execute o comando 'cd exec'.
 - Execute o comando Xadrez.exe'.
